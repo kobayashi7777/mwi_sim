@@ -1,4 +1,4 @@
-<script setup>
+mwi.svg<script setup>
 // 移除直接引入的SimulationTable组件
 // import SimulationTable from './components/SimulationTable.vue'
 </script>
