@@ -1,10 +1,12 @@
 <script setup>
-import SimulationTable from './components/SimulationTable.vue'
+// 移除直接引入的SimulationTable组件
+// import SimulationTable from './components/SimulationTable.vue'
 </script>
 
 <template>
   <div class="app-container">
-    <SimulationTable />
+    <!-- 添加router-view组件，让Vue Router处理路由渲染 -->
+    <router-view/>
   </div>
 </template>
 

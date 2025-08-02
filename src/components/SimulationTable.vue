@@ -95,7 +95,7 @@
       <p data-lang-key="role_limit" class="text-left">{{ currentLang['role_limit'] }}</p>
       <p data-lang-key="gear_limit" class="text-left">{{ currentLang['gear_limit'] }}</p>
       <div class="flex justify-center mt-4 mb-4 mb-2">
-        <a href="/sim.html" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 upload-button" data-lang-key="upload_button">{{ currentLang['upload_button'] }}</a>
+        <a href="/upload" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 upload-button" data-lang-key="upload_button">{{ currentLang['upload_button'] }}</a>
       </div>
     </div>
   </div>
