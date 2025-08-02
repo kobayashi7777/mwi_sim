@@ -1,0 +1,15 @@
+name = "mwi-sim-app"
+main = "src/index.js"
+compatibility_date = "2023-09-15"
+
+d1_databases = [
+  {
+    binding = "DB",
+    database_name = "mwi_sim_db",
+    database_id = "81ddab20-5edf-4f23-94c5-5b1eb4cbeaaa"
+  }
+]
+
+[site]
+bucket = "./dist"
+entry-point = "workers-site"
