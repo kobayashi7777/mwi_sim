@@ -47,14 +47,14 @@
         </div>
 
         <div>
-          <label for="avgTime" class="block mb-2 font-bold">{{ currentLang.avgTime }}</label>
-          <input type="number" id="avgTime"  v-model="formData.avgTime" required :placeholder="currentLang.avgTime_placeholder"
+          <label for="avg_time" class="block mb-2 font-bold">{{ currentLang.avgTime }}</label>
+          <input type="number" id="avg_time"  v-model="formData.avg_time" required :placeholder="currentLang.avgTime_placeholder"
                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div>
-          <label for="simulationData" class="block mb-2 font-bold">{{ currentLang.simulationData }}</label>
-          <textarea id="simulationData" v-model="formData.simulationData" rows="10" required :placeholder="currentLang.simulationData_placeholder"
+          <label for="simulator_data" class="block mb-2 font-bold">{{ currentLang.simulationData }}</label>
+          <textarea id="simulator_data" v-model="formData.simulator_data" rows="10" required :placeholder="currentLang.simulationData_placeholder"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical"></textarea>
         </div>
 
