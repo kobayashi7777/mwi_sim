@@ -78,11 +78,11 @@ const currentLangCode = ref('zh');
 
 // 表单数据
 const formData = ref({
-  gameId: '',
+  character_name: '',
   map: '',
   difficulty: '',
-  avgTime: '',
-  simulationData: ''
+  avg_time: '',
+  simulator_data: ''
 });
 
 // 计算当前语言
@@ -93,14 +93,53 @@ const setLanguage = (langCode) => {
   currentLangCode.value = langCode;
 };
 
-
-
 // 处理表单提交
-const handleSubmit = () => {
-  // 这里添加表单验证和提交逻辑
-  console.log('表单数据：', formData.value);
-  // 可以添加axios请求等逻辑
-  alert(currentLang.value.submit_success);
+const handleSubmit = async () => {
+  try {
+    // 表单验证 - 修复语言翻译访问错误
+    if (!formData.value.character_name || !formData.value.map || 
+        !formData.value.difficulty || !formData.value.avg_time || 
+        !formData.value.simulator_data) {
+      alert(currentLang.form_validation_error); // 移除了 .value
+      return;
+    }
+
+    // 发送数据到API
+    const response = await fetch('/api/simulation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData.value)
+    });
+
+    // 检查响应是否有效
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // 尝试解析JSON响应
+    let result;
+    try {
+      result = await response.json();
+    } catch (jsonError) {
+      alert(`${currentLang.submit_error}: Invalid JSON response`);
+      return;
+    }
+
+    // 处理成功响应
+    alert(currentLang.submit_success);
+    // 重置表单
+    formData.value = {
+      character_name: '',
+      map: '',
+      difficulty: '',
+      avg_time: '',
+      simulator_data: ''
+    };
+  } catch (error) {
+    alert(`${currentLang.submit_error}: ${error.message}`);
+  }
 };
 </script>
 

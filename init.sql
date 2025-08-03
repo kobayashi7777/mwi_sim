@@ -1,6 +1,3 @@
--- 删除旧表（如果存在）
-DROP TABLE IF EXISTS simulation_results;
-
 -- 创建新的模拟结果表
 CREATE TABLE IF NOT EXISTS simulation_results (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

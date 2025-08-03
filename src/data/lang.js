@@ -36,6 +36,9 @@ const lang = {
     avgTime_placeholder: "请输入平均耗时（分钟）",
     simulationData: "模拟器数据",
     simulationData_placeholder: "粘贴模拟器导出数据",
+    form_validation_error: '请填写所有必填字段',
+    submit_success: '提交成功',
+    submit_error: '提交失败'
   },
   en: {
     title: "Dungeon Benchmark",
@@ -73,6 +76,9 @@ const lang = {
     avgTime_placeholder: "Please enter average time (min)",
     simulationData: "Simulator data",
     simulationData_placeholder: "Paste simulator export data",
+    form_validation_error: 'Please fill in all required fields',
+    submit_success: 'Submission successful',
+    submit_error: 'Submission failed'
   }
 };
 
