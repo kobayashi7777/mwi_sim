@@ -52,32 +52,33 @@
               <thead>
                 <tr>
                   <th class="occupation-column  py-2 px-2 text-center font-bold border-b">
-                    {{ currentLang['职业'] }}
+                    {{ currentLang['class'] }}
                   </th>
                   <th class="average-time-column py-2 px-2 text-center font-bold border-b">
-                    {{ currentLang['平均时间'] }}
+                    {{ currentLang['avgTime'] }}
                   </th>
                   <th class="simulator-data-column py-2 px-2 text-center font-bold border-b">
-                    {{ currentLang['数据'] }}
+                    {{ currentLang['simulationData'] }}
                   </th>
                   <th class="player-column py-2 px-2 text-center font-bold border-b">
-                    {{ currentLang['玩家'] }}
+                    {{ currentLang['contributor'] }}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in getFilteredData(mapIndex)" :key="item.id || item.name + item.player" class="hover:bg-gray-50">
-                  <td class="occupation-column py-2 px-2 text-center profession-cell" :data-profession-key="getProfessionKey(item.name)">
-                    {{ currentLang[getProfessionKey(item.name)] || item.name }}
+                <tr v-for="item in getFilteredData(mapIndex)" :key="mapIndex + item.class" class="hover:bg-gray-50">
+                  <td class="occupation-column py-2 px-2 text-center profession-cell" :data-profession-key="item.id">
+                    {{ currentLang[item.class] || item.class }}
                   </td>
                   <td class="average-time-column py-2 px-2 text-center">{{ item.avg_time }}</td>
                   <td class="simulator-data-column py-2 px-2 text-center">
                     <button 
                       class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 copy-button"
-                      @click="copyToClipboard(item.data)">
-                      <i class="fa-solid fa-copy"></i> {{ copyStatus === item.data ? currentLang['已复制'] : currentLang['复制'] }}
-                    </button></td>
-                  <td class="player-column py-2 px-2 text-center">{{ item.player }}</td>
+                      @click="copyToClipboard(item.simulator_data)">
+                      <i class="fa-solid fa-copy"></i> {{ copyStatus === item.simulator_data ? currentLang['copied'] : currentLang['copy'] }}
+                    </button>
+                  </td>
+                  <td class="player-column py-2 px-2 text-center">{{ item.character_name }}</td>
                 </tr>
               </tbody>
             </table>
@@ -121,28 +122,19 @@ const selectedTier = ref(simulationData.map(() => 'T0'));
 const currentLang = computed(() => lang[currentLangCode.value]);
 
 // 获取指定地图的过滤数据
-const getFilteredData = (mapIndex) => {
+const getFilteredData = computed(() => (mapIndex) => {
   const mapData = simulationData[mapIndex];
   if (!mapData) return [];
-  const data = mapData.sim_result[selectedTier.value[mapIndex]] || [];
-  // 按avg_time降序排序
-  return [...data].sort((a, b) => a.avg_time - b.avg_time);
-};
-
-// 获取职业对应的键
-const getProfessionKey = (name) => {
-  switch (name) {
-    case '锤': return 'mace';
-    case '剑': return 'sword';
-    case '矛': return 'spear';
-    case '火法': return 'fire_mage';
-    case '自然': return 'nature_mage';
-    case '水法': return 'water_mage';
-    case '远程': return 'ranged';
-    case '盾': return 'bulwark';
-    default: return name;
-  }
-};
+  const tier = selectedTier.value[mapIndex];
+  
+  const data = mapData.sim_result[tier] || [];
+  // 按avg_time降序排序，处理"-"的情况
+  return [...data].sort((a, b) => {
+    const aTime = a.avg_time === "-" ? 1e5 : parseFloat(a.avg_time);
+    const bTime = b.avg_time === "-" ? 1e5 : parseFloat(b.avg_time);
+    return aTime - bTime;
+  });
+});
 
 // 切换语言
 const setLanguage = (langCode) => {

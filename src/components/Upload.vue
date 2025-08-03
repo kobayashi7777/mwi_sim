@@ -20,8 +20,8 @@
     <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md my-8">
       <form @submit.prevent="handleSubmit" class="space-y-6">
         <div>
-          <label for="gameId" class="block mb-2 font-bold">{{ currentLang.player_name }}</label>
-          <input type="text" id="gameId" v-model="formData.gameId" required :placeholder="currentLang.player_name_placeholder"
+          <label for="character_name" class="block mb-2 font-bold">{{ currentLang.character_name }}</label>
+          <input type="text" id="character_name" v-model="formData.character_name" required :placeholder="currentLang.character_name_placeholder"
                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
@@ -48,8 +48,7 @@
 
         <div>
           <label for="avgTime" class="block mb-2 font-bold">{{ currentLang.avgTime }}</label>
-          <input type="number" id="avgTime" v-model="formData.avgTime" step="0.01" min="0" required :placeholder="currentLang.avgTime_placeholder"
-                 @input="formatAvgTime"
+          <input type="number" id="avgTime"  v-model="formData.avgTime" required :placeholder="currentLang.avgTime_placeholder"
                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
@@ -94,12 +93,7 @@ const setLanguage = (langCode) => {
   currentLangCode.value = langCode;
 };
 
-// 格式化平均耗时，保留2位小数
-const formatAvgTime = () => {
-  if (formData.value.avgTime) {
-    formData.value.avgTime = parseFloat(formData.value.avgTime).toFixed(2);
-  }
-};
+
 
 // 处理表单提交
 const handleSubmit = () => {
