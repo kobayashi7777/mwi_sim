@@ -105,7 +105,7 @@ const handleSubmit = async () => {
     }
 
     // 发送数据到API
-    const response = await fetch('/api/simulation', {
+    const response = await fetch('/api/upload', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
