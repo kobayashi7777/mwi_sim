@@ -96,7 +96,7 @@ const setLanguage = (langCode) => {
 // 处理表单提交
 const handleSubmit = async () => {
   try {
-    // 表单验证 - 修复语言翻译访问错误
+    // 表单验证
     if (!formData.value.character_name || !formData.value.map || 
         !formData.value.difficulty || !formData.value.avg_time || 
         !formData.value.simulator_data) {
@@ -113,32 +113,26 @@ const handleSubmit = async () => {
       body: JSON.stringify(formData.value)
     });
 
-    // 检查响应是否有效
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const result = await response.json();
 
-    // 尝试解析JSON响应
-    let result;
-    try {
-      result = await response.json();
-    } catch (jsonError) {
-      alert(`${currentLang.submit_error}: Invalid JSON response`);
-      return;
+    if (result.success) {
+      // ✅ 成功提示
+      alert(currentLang.value.submit_success || '提交成功！数据已保存到数据库');
+      
+      // 重置表单
+      formData.value = {
+        character_name: '',
+        map: '',
+        difficulty: '',
+        avg_time: '',
+        simulator_data: ''
+      };
+    } else {
+      // ❌ 失败提示
+      alert(currentLang.value.submit_error + ': ' + (result.error || '未知错误'));
     }
-
-    // 处理成功响应
-    alert(currentLang.submit_success);
-    // 重置表单
-    formData.value = {
-      character_name: '',
-      map: '',
-      difficulty: '',
-      avg_time: '',
-      simulator_data: ''
-    };
   } catch (error) {
-    alert(`${currentLang.submit_error}: ${error.message}`);
+    alert(currentLang.value.submit_error + ': ' + error.message);
   }
 };
 </script>
