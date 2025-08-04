@@ -1,23 +1,21 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import SimulationTable from '../components/SimulationTable.vue';
-import Upload from '../components/Upload.vue';
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: SimulationTable
-  },
-  {
-    path: '/upload',
-    name: 'Upload',
-    component: Upload
-  }
-];
+import { createRouter, createWebHistory } from 'vue-router'
+import SimulationTable from '../views/SimulationTable.vue'
+import Upload from '../views/Upload.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
-});
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: SimulationTable,
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: Upload,
+    },
+  ],
+})
 
-export default router;
+export default router

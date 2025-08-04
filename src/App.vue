@@ -1,9 +1,40 @@
-mwi.svg<script setup>
-// 移除直接引入的SimulationTable组件
-// import SimulationTable from './components/SimulationTable.vue'
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+
+const name = ref('Unknown')
+
+const test_api = async () => {
+  try {
+    const res = await fetch('/api/test')
+    const data = await res.json()
+    console.log(data);
+  } catch (error) {
+    console.error('API call failed:', error)
+  }
+}
+const test_db = async () => {
+  try {
+    const res = await fetch('/api/db-test')
+    const data = await res.json()
+    console.log(data);
+  } catch (error) {
+    console.error('DB test failed:', error)
+  }
+}
+
+
 </script>
 
 <template>
+
+  <div>
+    <h1>API Test 在app.vue里记得删</h1>
+    <button @click="test_api">Test API</button>
+    <button @click="test_db">Test DB</button>
+  </div>
+
+
   <div class="app-container">
     <!-- 添加router-view组件，让Vue Router处理路由渲染 -->
     <router-view/>
