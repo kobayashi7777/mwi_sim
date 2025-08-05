@@ -22,7 +22,15 @@ const test_db = async () => {
     console.error('DB test failed:', error)
   }
 }
-
+const test_get_sim = async () => {
+  try {
+    const res = await fetch('/api/simulation-data')
+    const data = await res.json()
+    console.log(data);
+  } catch (error) {
+    console.error('get data failed:', error)
+  }
+}
 
 </script>
 
@@ -32,6 +40,7 @@ const test_db = async () => {
     <h1>API Test 在app.vue里记得删</h1>
     <button @click="test_api">Test API</button>
     <button @click="test_db">Test DB</button>
+    <button @click="test_get_sim">Test get data</button>
   </div>
 
 

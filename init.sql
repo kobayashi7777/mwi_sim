@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS simulation_results (
 );
 
 -- -- 插入示例数据
--- INSERT INTO simulation_results (
---   map_name, tier_name, avg_time, checked_avg_time, simulator_data, character_name,
---   is_mace, is_sword, is_spear
--- ) VALUES
---   ('D1', 'T0', '-', NULL, 'D1T0锤数据', '玩家A', 1, 0, 0),
---   ('D1', 'T0', '110', NULL, 'D1T0剑数据', '玩家B', 0, 1, 0),
---   ('D1', 'T0', '115', NULL, 'D1T0矛数据', '玩家C', 0, 0, 1);
+INSERT INTO simulation_results (
+  map_name, tier_name, avg_time, checked_avg_time, simulator_data, character_name,
+  is_mace, is_sword, is_spear
+) VALUES
+  ('D1', 'T0', '-', '15', 'D1T0锤数据', '玩家A', 1, 0, 0),
+  ('D1', 'T0', '110', '16', 'D1T0剑数据', '玩家B', 0, 1, 0),
+  ('D1', 'T0', '115', '17', 'D1T0矛数据', '玩家C', 0, 0, 1);

@@ -24,7 +24,7 @@
 
       <div class="scroll-content flex gap-4 transition-transform duration-300 ease-out">
         <div 
-          v-for="(mapData, mapIndex) in simulationData" 
+          v-for="(mapData, mapIndex) in mockSimulationData" 
           :key="mapIndex"
           class="scroll-item bg-white p-4 rounded-lg shadow-md min-w-[90%] max-w-[90%] md:min-w-[45%] md:max-w-[45%]"
           :data-map-index="mapIndex">
@@ -104,7 +104,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import simulationData from '../data/simulationData.js';
+import { mockSimulationData, fetchSimulationData } from '../data/simulationData.js';
 import lang from '../data/lang.js';
 
 // 状态管理
@@ -116,14 +116,14 @@ const startX = ref(0);
 const scrollLeft = ref(0);
 
 // 为每个地图创建独立的选择状态
-const selectedTier = ref(simulationData.map(() => 'T0'));
+const selectedTier = ref(mockSimulationData.map(() => 'T0'));
 
 // 计算当前语言
 const currentLang = computed(() => lang[currentLangCode.value]);
 
 // 获取指定地图的过滤数据
 const getFilteredData = computed(() => (mapIndex) => {
-  const mapData = simulationData[mapIndex];
+  const mapData = mockSimulationData[mapIndex];
   if (!mapData) return [];
   const tier = selectedTier.value[mapIndex];
   
@@ -167,7 +167,7 @@ const copyToClipboard = (text) => {
 
 // 移动到指定索引
 const moveToIndex = (index) => {
-  const itemCount = simulationData.length;
+  const itemCount = mockSimulationData.length;
   const maxIndex = itemCount - (window.innerWidth >= 768 ? 2 : 1);
   const newIndex = Math.max(0, Math.min(index, maxIndex));
   currentIndex.value = newIndex;
@@ -193,7 +193,7 @@ const updateArrows = () => {
   const rightArrow = document.querySelector('.scroll-arrow.right');
   if (!leftArrow || !rightArrow) return;
 
-  const itemCount = simulationData.length;
+  const itemCount = mockSimulationData.length;
   const maxIndex = itemCount - (window.innerWidth >= 768 ? 2 : 1);
 
   leftArrow.classList.toggle('hidden', currentIndex.value <= 0);

@@ -1,5 +1,5 @@
 // 地牢模拟大赛数据
-const simulationData = [
+const mockSimulationData = [
   {
     "map": "D1",
     "sim_result": {
@@ -143,4 +143,20 @@ const simulationData = [
   
 ];
 
-export default simulationData;
+// 从后端API获取真实数据
+const fetchSimulationData = async () => {
+  try {
+    // 调用后端API获取数据
+    const response = await fetch('/api/simulation-data');
+    if (!response.ok) {
+      throw new Error('获取模拟数据失败');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('获取模拟数据时出错:', error);
+    // 返回空数组作为备用
+    return [];
+  }
+};
+
+export { mockSimulationData, fetchSimulationData };
