@@ -29,7 +29,17 @@
 		"binding": "MWI_SIM_CACHE",
 		"id": "fab69073ee5245a58e0e8cf44fbf2cdb"
 		}
-	]
+	],
+	"routes": [
+		{
+			"pattern": "*.cnnewnew.top/*",
+			"zone_id": "7e71d11770af1c367536190b5d6c21fa"
+		},
+		{
+			"pattern": "cnnewnew.top",
+			"zone_id": "7e71d11770af1c367536190b5d6c21fa"
+		}
+	],
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
