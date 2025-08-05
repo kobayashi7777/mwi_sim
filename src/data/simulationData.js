@@ -151,7 +151,13 @@ const fetchSimulationData = async () => {
     if (!response.ok) {
       throw new Error('获取模拟数据失败');
     }
-    return await response.json();
+    const result = await response.json();
+    // 检查返回的数据结构并提取data字段
+    if (result.success && Array.isArray(result.data)) {
+      return result.data;
+    } else {
+      throw new Error('数据格式不正确: ' + JSON.stringify(result));
+    }
   } catch (error) {
     console.error('获取模拟数据时出错:', error);
     // 返回空数组作为备用

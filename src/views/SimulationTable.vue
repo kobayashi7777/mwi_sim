@@ -24,7 +24,7 @@
 
       <div class="scroll-content flex gap-4 transition-transform duration-300 ease-out">
         <div 
-          v-for="(mapData, mapIndex) in mockSimulationData" 
+          v-for="(mapData, mapIndex) in simulationData" 
           :key="mapIndex"
           class="scroll-item bg-white p-4 rounded-lg shadow-md min-w-[90%] max-w-[90%] md:min-w-[45%] md:max-w-[45%]"
           :data-map-index="mapIndex">
@@ -67,7 +67,7 @@
               </thead>
               <tbody>
                 <tr v-for="item in getFilteredData(mapIndex)" :key="mapIndex + item.class" class="hover:bg-gray-50">
-                  <td class="occupation-column py-2 px-2 text-center profession-cell" :data-profession-key="item.id">
+                  <td class="occupation-column py-2 px-2 text-center profession-cell" :data-profession-key="mapIndex+item.class">
                     {{ currentLang[item.class] || item.class }}
                   </td>
                   <td class="average-time-column py-2 px-2 text-center">{{ item.avg_time }}</td>
@@ -75,7 +75,7 @@
                     <button 
                       class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 copy-button"
                       @click="copyToClipboard(item.simulator_data)">
-                      <i class="fa-solid fa-copy"></i> {{ copyStatus === item.simulator_data ? currentLang['copied'] : currentLang['copy'] }}
+                      <i class="fa-solid fa-copy"></i> {{ (copyStatus === item.simulator_data && item.simulator_data !== '') || copyStatus === 'EMPTY_TEXT_COPIED' ? currentLang['copied'] : currentLang['copy'] }}
                     </button>
                   </td>
                   <td class="player-column py-2 px-2 text-center">{{ item.character_name }}</td>
@@ -107,6 +107,9 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { mockSimulationData, fetchSimulationData } from '../data/simulationData.js';
 import lang from '../data/lang.js';
 
+// 创建响应式数据变量，初始值为模拟数据
+const simulationData = ref(mockSimulationData);
+
 // 状态管理
 const currentLangCode = ref('zh');
 const copyStatus = ref('');
@@ -116,14 +119,14 @@ const startX = ref(0);
 const scrollLeft = ref(0);
 
 // 为每个地图创建独立的选择状态
-const selectedTier = ref(mockSimulationData.map(() => 'T0'));
+const selectedTier = ref(simulationData.value.map(() => 'T0'));
 
 // 计算当前语言
 const currentLang = computed(() => lang[currentLangCode.value]);
 
 // 获取指定地图的过滤数据
 const getFilteredData = computed(() => (mapIndex) => {
-  const mapData = mockSimulationData[mapIndex];
+  const mapData = simulationData.value[mapIndex];
   if (!mapData) return [];
   const tier = selectedTier.value[mapIndex];
   
@@ -156,10 +159,19 @@ const selectTier = (mapIndex, tier) => {
 // 复制到剪贴板
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text).then(() => {
-    copyStatus.value = text;
-    setTimeout(() => {
-      copyStatus.value = '';
-    }, 2000);
+    // 为非空文本设置复制状态
+    if (text.trim() !== '') {
+      copyStatus.value = text;
+      setTimeout(() => {
+        copyStatus.value = '';
+      }, 2000);
+    } else {
+      // 为空文本显示一个临时的特殊状态
+      copyStatus.value = 'EMPTY_TEXT_COPIED';
+      setTimeout(() => {
+        copyStatus.value = '';
+      }, 2000);
+    }
   }).catch(err => {
     alert(currentLang.value['copy_failed'] + ': ' + err);
   });
@@ -167,7 +179,7 @@ const copyToClipboard = (text) => {
 
 // 移动到指定索引
 const moveToIndex = (index) => {
-  const itemCount = mockSimulationData.length;
+  const itemCount = simulationData.value.length;
   const maxIndex = itemCount - (window.innerWidth >= 768 ? 2 : 1);
   const newIndex = Math.max(0, Math.min(index, maxIndex));
   currentIndex.value = newIndex;
@@ -193,7 +205,7 @@ const updateArrows = () => {
   const rightArrow = document.querySelector('.scroll-arrow.right');
   if (!leftArrow || !rightArrow) return;
 
-  const itemCount = mockSimulationData.length;
+  const itemCount = simulationData.value.length;
   const maxIndex = itemCount - (window.innerWidth >= 768 ? 2 : 1);
 
   leftArrow.classList.toggle('hidden', currentIndex.value <= 0);
@@ -269,12 +281,27 @@ const handleResize = () => {
 };
 
 // 初始化
-onMounted(() => {
+onMounted(async() => {
   // 设置初始语言
   setLanguage('zh');
-
   // 更新箭头状态
   updateArrows();
+
+  // 异步获取真实数据
+  try {
+    const realData = await fetchSimulationData();
+    // 只有当获取到有效数据时才替换模拟数据
+    if (Array.isArray(realData) && realData.length > 0) {
+      simulationData.value = realData;
+      // 更新选择状态以匹配新数据
+      selectedTier.value = realData.map(() => 'T0');
+      // 重置当前索引并更新滚动位置
+      moveToIndex(0);
+    }
+  } catch (error) {
+    console.error('加载真实数据时出错:', error);
+    // 出错时继续使用模拟数据
+  }
 
   // 添加事件监听器
   const scrollContainer = document.querySelector('.scroll-container');

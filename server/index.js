@@ -260,7 +260,7 @@ function formatSimulationData(results) {
 					avg_time: checked_avg_time || '-',
 					simulator_data: simulator_data || '',
 					character_name: character_name || '',
-					id: id || ''
+					id: id || '1e6'
 				};
 			}
 		}
