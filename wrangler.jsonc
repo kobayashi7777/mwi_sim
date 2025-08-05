@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "mwi-sim-vue",
+	"name": "mwi-sim",
 	"compatibility_date": "2025-08-03",
 	"main": "server/index.js",
 	"build": {
