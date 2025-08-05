@@ -92,9 +92,10 @@
     </div>
 
     <div class="mt-4 text-gray-700 text-left px-8">
-      <p data-lang-key="data_source" class="text-left">{{ currentLang['data_source'] }}<a href="https://shykai.github.io/MWICombatSimulatorTest/dist/" target="_blank" class="text-blue-500 hover:underline">MWISimulator</a></p>
+      <p data-lang-key="data_source" class="text-left">{{ currentLang['data_source'] }}<a href="https://shykai.github.io/MWICombatSimulatorTest/test/" target="_blank" class="text-blue-500 hover:underline">Simulator</a></p>
       <p data-lang-key="role_limit" class="text-left">{{ currentLang['role_limit'] }}</p>
       <p data-lang-key="gear_limit" class="text-left">{{ currentLang['gear_limit'] }}</p>
+      <p data-lang-key="special_note" class="text-left">{{ currentLang['special_note'] }}</p>
       <div class="flex justify-center mt-4 mb-4 mb-2">
         <a href="/upload" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 upload-button" data-lang-key="upload_button">{{ currentLang['upload_button'] }}</a>
       </div>

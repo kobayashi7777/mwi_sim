@@ -134,11 +134,35 @@ async function handleUpload(request,env,ctx,corsHeaders) {
 
 async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 	try {
+		// 检查KV绑定是否存在
+		if (!env.MWI_SIM_CACHE) {
+			console.warn('KV binding is not available, proceeding without cache');
+		} else {
+			// 尝试从缓存获取数据
+			const cachedData = await env.MWI_SIM_CACHE.get('simulation_data');
+			const cacheTimestamp = await env.MWI_SIM_CACHE.get('cache_timestamp');
+			const now = Date.now();
+			const tenMinutes = 10 * 60 * 1000;
+
+			// 如果缓存存在且未过期
+			if (cachedData && cacheTimestamp && (now - parseInt(cacheTimestamp) < tenMinutes)) {
+				console.log('Returning cached simulation data');
+				return new Response(JSON.stringify({
+					success: true,
+					data: JSON.parse(cachedData),
+					fromCache: true
+				}), {
+					headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+				});
+			}
+		}
+
+		// 缓存不存在或已过期，从数据库获取数据
 		// 检查DB绑定是否存在
 		if (!env.DB) {
 			throw new Error('DB binding is not available in request.env');
 		}
-
+		
 		// 定义所有职业类型
 		const maps = ['D1', 'D2', 'D3', 'D4'];
         const tiers = ['T0', 'T1', 'T2'];
@@ -186,6 +210,13 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 		
 		// 格式化结果为前端需要的结构
 		const formattedData = formatSimulationData(allResults);
+
+		// 更新缓存
+		if (env.MWI_SIM_CACHE) {
+			await env.MWI_SIM_CACHE.put('simulation_data', JSON.stringify(formattedData));
+			await env.MWI_SIM_CACHE.put('cache_timestamp', Date.now().toString());
+			console.log('Simulation data cached successfully');
+		}
 
 		return new Response(JSON.stringify({
 			success: true,

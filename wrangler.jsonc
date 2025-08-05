@@ -22,7 +22,14 @@
 		"database_name": "mwi_sim_db",
 		"database_id": "81ddab20-5edf-4f23-94c5-5b1eb4cbeaaa"
 		}
-  	]
+  	],
+	// 添加KV命名空间配置
+	"kv_namespaces": [
+		{
+		"binding": "MWI_SIM_CACHE",
+		"id": "fab69073ee5245a58e0e8cf44fbf2cdb"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

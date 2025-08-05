@@ -1,6 +1,6 @@
 {
-	"name": "mwi-sim-vue",
-	"version": "0.0.0",
+	"name": "mwi-sim",
+	"version": "1.0.0",
 	"private": true,
 	"type": "module",
 	"scripts": {

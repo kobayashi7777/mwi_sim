@@ -55,7 +55,7 @@
         <div>
           <label for="simulator_data" class="block mb-2 font-bold">{{ currentLang.simulationData }}</label>
           <textarea id="simulator_data" v-model="formData.simulator_data" rows="10" required :placeholder="currentLang.simulationData_placeholder"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical"></textarea>
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 no-resize"></textarea>
         </div>
 
         <div class="flex justify-center mt-6">
@@ -364,5 +364,9 @@ label {
 
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.no-resize {
+  resize: none !important;
 }
 </style>
