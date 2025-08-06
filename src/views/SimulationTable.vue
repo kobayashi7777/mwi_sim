@@ -371,7 +371,7 @@ onUnmounted(() => {
   transform: translateY(-50%);
   width: 50px;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(133, 133, 133, 0.957);
   border-radius: 50%;
   display: flex;
   align-items: center;

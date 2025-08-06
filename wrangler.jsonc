@@ -32,13 +32,14 @@
 	],
 	"routes": [
 		{
-			"pattern": "*.cnnewnew.top/*",
+			"pattern": "xprework.cnnewnew.top/*",
 			"zone_id": "7e71d11770af1c367536190b5d6c21fa"
 		},
-		{
-			"pattern": "cnnewnew.top",
-			"zone_id": "7e71d11770af1c367536190b5d6c21fa"
-		}
+		// 会查水表
+		// {
+		// 	"pattern": "cnnewnew.top",
+		// 	"zone_id": "7e71d11770af1c367536190b5d6c21fa"
+		// }
 	],
 	/**
 	 * Smart Placement
