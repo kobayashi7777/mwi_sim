@@ -93,8 +93,21 @@ const setLanguage = (langCode) => {
   currentLangCode.value = langCode;
 };
 
+// 添加防抖函数
+const debounce = (fn, delay = 500) => {
+  let timer = null;
+  return function(...args) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+};
+
+
+
 // 处理表单提交
-const handleSubmit = async () => {
+const submitForm = async () => {
   try {
     // 表单验证
     if (!formData.value.character_name || !formData.value.map || 
@@ -135,6 +148,10 @@ const handleSubmit = async () => {
     alert(currentLang.value.submit_error + ': ' + error.message);
   }
 };
+
+// 处理表单提交（带防抖）
+const handleSubmit = debounce(submitForm, 1000);
+
 </script>
 
 <style scoped>
