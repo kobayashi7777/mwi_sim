@@ -15,9 +15,9 @@
       </button>
     </div>
 
-    <h1 class="text-xl font-bold text-center mb-6">{{ currentLang.upload_title }}</h1>
+    <h1 class="text-xl font-bold text-center mb-6" style="color: #213547 !important;">{{ currentLang.upload_title }}</h1>
 
-    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md my-8">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md my-8" style="color: #213547 !important;">
       <form @submit.prevent="handleSubmit" class="space-y-6">
         <div>
           <label for="character_name" class="block mb-2 font-bold">{{ currentLang.character_name }}</label>

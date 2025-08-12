@@ -15,7 +15,7 @@
       </button>
     </div>
 
-    <h1 class="text-xl font-bold text-center mb-6" data-lang-key="title">{{ currentLang.title }}</h1>
+    <h1 class="text-xl font-bold text-center mb-6" data-lang-key="title" style="color: #213547 !important;">{{ currentLang.title }}</h1>
 
     <div class="scroll-container relative overflow-hidden">
       <div class="scroll-arrow left" @click="moveLeft">
@@ -29,7 +29,7 @@
           class="scroll-item bg-white p-4 rounded-lg shadow-md min-w-[90%] max-w-[90%] md:min-w-[45%] md:max-w-[45%]"
           :data-map-index="mapIndex">
 
-          <h2 class="text-xl font-bold mb-4 text-center map-header">{{ currentLang[`map_${mapIndex + 1}`] }}</h2>
+          <h2 class="text-xl font-bold mb-4 text-center map-header" style="color: #213547 !important;">{{ currentLang[`map_${mapIndex + 1}`] }}</h2>
 
           <!-- 标签页容器 -->
           <div class="tabs mb-4">
@@ -45,10 +45,8 @@
               </button>
             </div>
           </div>
-
-          
-          <div class="table-container overflow-x-auto">
-            <table class="w-full my-4 tab-content" style="table-layout: fixed;">
+          <div class="table-container overflow-x-auto" >
+            <table class="w-full my-4 tab-content" style="table-layout: fixed;color: #213547 !important;" >
               <thead>
                 <tr>
                   <th class="occupation-column  py-2 px-2 text-center font-bold border-b">
@@ -563,7 +561,7 @@ onUnmounted(() => {
 
 .scroll-hint {
   text-align: center;
-  color: #666;
+  color: #666 !important;
   margin-bottom: 1rem;
   font-size: 0.9rem;
 }
@@ -587,7 +585,7 @@ onUnmounted(() => {
   background: none;
   font-weight: 500;
   text-align: center; /* 文本居中 */
-  color: #6B7280;
+  color: #6B7280 !important;
   font-size: 0.9rem;
 }
 
