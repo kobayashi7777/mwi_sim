@@ -100,22 +100,106 @@
       <div class="two-column-container text-gray-700">
         <div class="left-column">
           <p data-lang-key="note_left_1" class="text-center">{{ currentLang['note_left_1'] }}</p>
-          <p data-lang-key="note_left_2" class="text-center">{{ currentLang['note_left_2'] }}</p>
-          <p data-lang-key="note_left_3" class="text-center">{{ currentLang['note_left_3'] }}</p>
-          <p data-lang-key="note_left_4" class="text-center">{{ currentLang['note_left_4'] }}</p>
-          <p data-lang-key="note_left_5" class="text-center">{{ currentLang['note_left_5'] }}</p>
-          <p data-lang-key="note_left_6" class="text-center">{{ currentLang['note_left_6'] }}</p>
-          <p data-lang-key="note_left_7" class="text-center">{{ currentLang['note_left_7'] }}</p>
+          <p data-lang-key="note_left_2" class="text-center">{{ currentLang['note_left_2'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_sword')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_left_3" class="text-center">{{ currentLang['note_left_3'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_flail')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>          
+          <p data-lang-key="note_left_4" class="text-center">{{ currentLang['note_left_4'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_spear')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_left_5" class="text-center">{{ currentLang['note_left_5'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_bulwark')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_left_6" class="text-center">{{ currentLang['note_left_6'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_ranged')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_left_7" class="text-center">{{ currentLang['note_left_7'] }}
+            <button 
+              @click="copyTemplateToClipboard('t1_magic')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
           <p data-lang-key="note_left_8" class="text-center">{{ currentLang['note_left_8'] }}</p>
           <p data-lang-key="note_left_9" class="text-center">{{ currentLang['note_left_9'] }}</p>        </div>
         <div class="right-column">
           <p data-lang-key="note_right_1" class="text-center">{{ currentLang['note_right_1'] }}</p>
-          <p data-lang-key="note_right_2" class="text-center">{{ currentLang['note_right_2'] }}</p>
-          <p data-lang-key="note_right_3" class="text-center">{{ currentLang['note_right_3'] }}</p>
-          <p data-lang-key="note_right_4" class="text-center">{{ currentLang['note_right_4'] }}</p>
-          <p data-lang-key="note_right_5" class="text-center">{{ currentLang['note_right_5'] }}</p>
-          <p data-lang-key="note_right_6" class="text-center">{{ currentLang['note_right_6'] }}</p>
-          <p data-lang-key="note_right_7" class="text-center">{{ currentLang['note_right_7'] }}</p>
+          <p data-lang-key="note_right_2" class="text-center">{{ currentLang['note_right_2'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_sword')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_right_3" class="text-center">{{ currentLang['note_right_3'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_flail')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_right_4" class="text-center">{{ currentLang['note_right_4'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_spear')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_right_5" class="text-center">{{ currentLang['note_right_5'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_bulwark')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_right_6" class="text-center">{{ currentLang['note_right_6'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_ranged')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
+          <p data-lang-key="note_right_7" class="text-center">{{ currentLang['note_right_7'] }}
+            <button 
+              @click="copyTemplateToClipboard('t2_magic')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_quick_copy']}}</button>
+          </p>
           <p data-lang-key="note_right_8" class="text-center">{{ currentLang['note_right_8'] }}</p>
           <p data-lang-key="note_right_9" class="text-center">{{ currentLang['note_right_9'] }}</p>
         </div>
@@ -135,7 +219,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { mockSimulationData, fetchSimulationData } from '../data/simulationData.js';
 import lang from '../data/lang.js';
-
+import template_list from '../data/template.js';
 // 创建响应式数据变量，初始值为模拟数据
 const simulationData = ref(mockSimulationData);
 
@@ -185,6 +269,8 @@ const selectTier = (mapIndex, tier) => {
   selectedTier.value[mapIndex] = tier;
 };
 
+
+
 // 复制到剪贴板
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text).then(() => {
@@ -205,6 +291,15 @@ const copyToClipboard = (text) => {
     alert(currentLang.value['copy_failed'] + ': ' + err);
   });
 };
+
+//快速复制模板
+const copyTemplateToClipboard = (text) => {
+  const content = template_list[text];
+  if (content) {
+    copyToClipboard(content);
+  }
+};
+
 
 // 移动到指定索引
 const moveToIndex = (index) => {

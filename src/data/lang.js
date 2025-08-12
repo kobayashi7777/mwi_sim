@@ -1,3 +1,5 @@
+import template_list from "./template";
+
 // 多语言配置
 const lang = {
   zh: {
@@ -57,7 +59,8 @@ const lang = {
     simulationData_placeholder: "粘贴模拟器导出数据",
     form_validation_error: '请填写所有必填字段',
     submit_success: '提交成功',
-    submit_error: '提交失败'
+    submit_error: '提交失败',
+    template_quick_copy: "复制单人模板",
   },
   en: {
     title: "Dungeon Simulation Competition",
@@ -116,7 +119,8 @@ const lang = {
     simulationData_placeholder: "Paste simulator export data",
     form_validation_error: 'Please fill in all required fields',
     submit_success: 'Submission successful',
-    submit_error: 'Submission failed'
+    submit_error: 'Submission failed',
+    template_quick_copy: "Copy template",
   }
 };
 
