@@ -197,7 +197,7 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
                             AND ${cls.field} = 1
                             AND map_name = '${map}'
                             AND tier_name = '${tier}'
-                        ORDER BY checked_avg_time ASC, created_at ASC
+                        ORDER BY CAST(REPLACE(checked_avg_time, ' ', '') AS REAL) ASC, created_at ASC
                         LIMIT 1
                     `;
                     const result = await env.DB.prepare(sql).first();
