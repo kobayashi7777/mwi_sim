@@ -93,7 +93,7 @@
 
       <div class="mt-4 text-gray-700 px-8 flex-col items-center justify-center space-y-4">
         <p data-lang-key="data_source" class="text-center w-full">{{ currentLang['note_1'] }}<a href="https://shykai.github.io/MWICombatSimulatorTest/Test/" target="_blank" class="text-blue-500 hover:underline">Simulator</a></p>
-        <p data-lang-key="role_limit" class="text-center w-full">{{ currentLang['note_2'] }}</p>
+        <p data-lang-key="role_limit" class="text-center w-full">{{ currentLang['note_2'] }} <span v-html="currentLang['note_2_2']"></span></p>
       </div>
 
       <!--左右布局-->
