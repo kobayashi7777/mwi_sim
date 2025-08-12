@@ -91,15 +91,43 @@
       </div>
     </div>
 
-    <div class="mt-4 text-gray-700 text-left px-8">
-      <p data-lang-key="data_source" class="text-left">{{ currentLang['data_source'] }}<a href="https://shykai.github.io/MWICombatSimulatorTest/Test/" target="_blank" class="text-blue-500 hover:underline">Simulator</a></p>
-      <p data-lang-key="role_limit" class="text-left">{{ currentLang['role_limit'] }}</p>
-      <p data-lang-key="gear_limit" class="text-left">{{ currentLang['gear_limit'] }}</p>
-      <p data-lang-key="special_note" class="text-left">{{ currentLang['special_note'] }}</p>
-      <div class="flex justify-center mt-4 mb-4 mb-2">
+      <div class="mt-4 text-gray-700 px-8 flex-col items-center justify-center space-y-4">
+        <p data-lang-key="data_source" class="text-center w-full">{{ currentLang['note_1'] }}<a href="https://shykai.github.io/MWICombatSimulatorTest/Test/" target="_blank" class="text-blue-500 hover:underline">Simulator</a></p>
+        <p data-lang-key="role_limit" class="text-center w-full">{{ currentLang['note_2'] }}</p>
+      </div>
+
+      <!--左右布局-->
+      <div class="two-column-container text-gray-700">
+        <div class="left-column">
+          <p data-lang-key="note_left_1" class="text-center">{{ currentLang['note_left_1'] }}</p>
+          <p data-lang-key="note_left_2" class="text-center">{{ currentLang['note_left_2'] }}</p>
+          <p data-lang-key="note_left_3" class="text-center">{{ currentLang['note_left_3'] }}</p>
+          <p data-lang-key="note_left_4" class="text-center">{{ currentLang['note_left_4'] }}</p>
+          <p data-lang-key="note_left_5" class="text-center">{{ currentLang['note_left_5'] }}</p>
+          <p data-lang-key="note_left_6" class="text-center">{{ currentLang['note_left_6'] }}</p>
+          <p data-lang-key="note_left_7" class="text-center">{{ currentLang['note_left_7'] }}</p>
+          <p data-lang-key="note_left_8" class="text-center">{{ currentLang['note_left_8'] }}</p>
+          <p data-lang-key="note_left_9" class="text-center">{{ currentLang['note_left_9'] }}</p>        </div>
+        <div class="right-column">
+          <p data-lang-key="note_right_1" class="text-center">{{ currentLang['note_right_1'] }}</p>
+          <p data-lang-key="note_right_2" class="text-center">{{ currentLang['note_right_2'] }}</p>
+          <p data-lang-key="note_right_3" class="text-center">{{ currentLang['note_right_3'] }}</p>
+          <p data-lang-key="note_right_4" class="text-center">{{ currentLang['note_right_4'] }}</p>
+          <p data-lang-key="note_right_5" class="text-center">{{ currentLang['note_right_5'] }}</p>
+          <p data-lang-key="note_right_6" class="text-center">{{ currentLang['note_right_6'] }}</p>
+          <p data-lang-key="note_right_7" class="text-center">{{ currentLang['note_right_7'] }}</p>
+          <p data-lang-key="note_right_8" class="text-center">{{ currentLang['note_right_8'] }}</p>
+          <p data-lang-key="note_right_9" class="text-center">{{ currentLang['note_right_9'] }}</p>
+        </div>
+      </div>
+
+      <div class="mt-4 text-gray-700 px-8 flex-col items-center justify-center space-y-4">
+        <p data-lang-key="note_down_1" class="text-center w-full">{{ currentLang['note_down_1'] }}</p>
+        <br>
+      </div>
+      <div class="flex justify-center mt-2 mb-4 mb-2">
         <a href="/upload" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 upload-button" data-lang-key="upload_button">{{ currentLang['upload_button'] }}</a>
       </div>
-    </div>
   </div>
 </template>
 
@@ -363,6 +391,7 @@ onUnmounted(() => {
     min-width: 40%;
     max-width: 40%;
   }
+  
 }
 
 .scroll-arrow {
@@ -646,5 +675,53 @@ h1 {
 
 .profession-cell {
   text-align: center;
+}
+/* 全宽文本样式 */
+.full-width-text {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* 两栏布局样式 */
+.two-column-container {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.left-column {
+  width: 50%;
+  padding-right: 16px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.right-column {
+  width: 50%;
+  padding-left: 16px;
+}
+
+/* 按钮容器样式 */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+/* 按钮样式 */
+.upload-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.upload-button:hover {
+  background-color: #2563eb;
 }
 </style>
