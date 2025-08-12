@@ -47,7 +47,7 @@
 
         <div>
           <label for="avg_time" class="block mb-2 font-bold">{{ currentLang.avgTime }}</label>
-          <input type="number" id="avg_time"  v-model="formData.avg_time" required :placeholder="currentLang.avgTime_placeholder"
+          <input type="text" id="avg_time"  v-model="formData.avg_time" required :placeholder="currentLang.avgTime_placeholder"
                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 

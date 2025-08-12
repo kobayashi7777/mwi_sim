@@ -134,19 +134,37 @@
           </p>
           <p data-lang-key="note_left_6" class="text-center">{{ currentLang['note_left_6'] }}
             <button 
-              @click="copyTemplateToClipboard('t1_ranged')"
+              @click="copyTemplateToClipboard('t1_ranged_bow')"
               class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
               style="padding: 4px 8px; font-size: 15px;"
               title="复制内容"
-            >{{ currentLang['template_quick_copy']}}</button>
+            >{{ currentLang['template_bow_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t1_ranged_crossbow')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_crossbow_copy']}}</button>
           </p>
           <p data-lang-key="note_left_7" class="text-center">{{ currentLang['note_left_7'] }}
             <button 
-              @click="copyTemplateToClipboard('t1_magic')"
+              @click="copyTemplateToClipboard('t1_magic_nature')"
               class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
               style="padding: 4px 8px; font-size: 15px;"
               title="复制内容"
-            >{{ currentLang['template_quick_copy']}}</button>
+            >{{ currentLang['template_nature_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t1_magic_fire')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_fire_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t1_magic_water')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_water_copy']}}</button>
           </p>
           <p data-lang-key="note_left_8" class="text-center">{{ currentLang['note_left_8'] }}</p>
           <p data-lang-key="note_left_9" class="text-center">{{ currentLang['note_left_9'] }}</p>        </div>
@@ -186,19 +204,38 @@
           </p>
           <p data-lang-key="note_right_6" class="text-center">{{ currentLang['note_right_6'] }}
             <button 
-              @click="copyTemplateToClipboard('t2_ranged')"
+              @click="copyTemplateToClipboard('t2_ranged_bow')"
               class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
               style="padding: 4px 8px; font-size: 15px;"
               title="复制内容"
-            >{{ currentLang['template_quick_copy']}}</button>
+            >{{ currentLang['template_bow_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t2_ranged_crossbow')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_crossbow_copy']}}</button>
+
           </p>
           <p data-lang-key="note_right_7" class="text-center">{{ currentLang['note_right_7'] }}
             <button 
-              @click="copyTemplateToClipboard('t2_magic')"
+              @click="copyTemplateToClipboard('t2_magic_nature')"
               class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
               style="padding: 4px 8px; font-size: 15px;"
               title="复制内容"
-            >{{ currentLang['template_quick_copy']}}</button>
+            >{{ currentLang['template_nature_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t2_magic_fire')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_fire_copy']}}</button>
+            <button 
+              @click="copyTemplateToClipboard('t2_magic_water')"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              style="padding: 4px 8px; font-size: 15px;"
+              title="复制内容"
+            >{{ currentLang['template_water_copy']}}</button>
           </p>
           <p data-lang-key="note_right_8" class="text-center">{{ currentLang['note_right_8'] }}</p>
           <p data-lang-key="note_right_9" class="text-center">{{ currentLang['note_right_9'] }}</p>
