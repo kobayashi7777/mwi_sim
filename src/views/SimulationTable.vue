@@ -148,7 +148,7 @@ const startX = ref(0);
 const scrollLeft = ref(0);
 
 // 为每个地图创建独立的选择状态
-const selectedTier = ref(simulationData.value.map(() => 'T0'));
+const selectedTier = ref(simulationData.value.map(() => 'T1'));
 
 // 计算当前语言
 const currentLang = computed(() => lang[currentLangCode.value]);
@@ -323,7 +323,7 @@ onMounted(async() => {
     if (Array.isArray(realData) && realData.length > 0) {
       simulationData.value = realData;
       // 更新选择状态以匹配新数据
-      selectedTier.value = realData.map(() => 'T0');
+      selectedTier.value = realData.map(() => 'T1');
       // 重置当前索引并更新滚动位置
       moveToIndex(0);
     }
