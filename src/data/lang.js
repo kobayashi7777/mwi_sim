@@ -53,7 +53,7 @@ const lang = {
     map_2: "D2",
     map_3: "D3",
     map_4: "D4",
-    mace: "Mace",
+    mace: "Flail",
     sword: "Sword",
     spear: "Spear",
     fire_mage: "Fire Mage",

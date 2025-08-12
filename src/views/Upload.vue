@@ -40,7 +40,6 @@
           <label for="difficulty" class="block mb-2 font-bold">{{ currentLang.difficulty }}</label>
           <select id="difficulty" v-model="formData.difficulty" required
                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="T0">T0</option>
             <option value="T1">T1</option>
             <option value="T2">T2</option>
           </select>

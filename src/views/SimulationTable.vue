@@ -36,7 +36,7 @@
             <!-- 第二级标签页 - 地图难度 -->
             <div class="tab-level-2 flex border-b border-gray-300">
               <button 
-                v-for="tier in ['T0', 'T1', 'T2']"
+                v-for="tier in ['T1', 'T2']"
                 :key="tier"
                 :class="{ 'tab-button': true, 'active': selectedTier[mapIndex] === tier }"
                 :data-difficulty="tier"
