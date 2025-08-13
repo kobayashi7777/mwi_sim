@@ -225,12 +225,15 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 			headers: { ...corsHeaders, 'Content-Type': 'application/json' }
 		});
 	} catch (error) {
+		// 数据库炸了
+		const cachedData = await env.MWI_SIM_CACHE.get('simulation_data');
 		return new Response(JSON.stringify({
-			success: false,
-			error: error.message
-		}), {
-			status: 500,
-			headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+					success: true,
+					data: JSON.parse(cachedData),
+					fromCache: true,
+					error: error.message
+				}), {
+					headers: { ...corsHeaders, 'Content-Type': 'application/json' }
 		});
 	}
 }
