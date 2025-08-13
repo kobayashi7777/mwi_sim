@@ -165,7 +165,7 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 		
 		// 定义所有职业类型
 		const maps = ['D1', 'D2', 'D3', 'D4'];
-        const tiers = ['T0', 'T1', 'T2'];
+        const tiers = ['T1', 'T2'];
 		const classes = [
 			{ name: 'mace', field: 'is_mace' },
 			{ name: 'sword', field: 'is_sword' },
