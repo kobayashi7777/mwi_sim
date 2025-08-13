@@ -142,7 +142,7 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 			const cachedData = await env.MWI_SIM_CACHE.get('simulation_data');
 			const cacheTimestamp = await env.MWI_SIM_CACHE.get('cache_timestamp');
 			const now = Date.now();
-			const tenMinutes = 15 * 60 * 1000;
+			const tenMinutes = 30 * 60 * 1000;
 
 			// 如果缓存存在且未过期
 			if (cachedData && cacheTimestamp && (now - parseInt(cacheTimestamp) < tenMinutes)) {
