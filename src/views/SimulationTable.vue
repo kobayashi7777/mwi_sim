@@ -17,6 +17,13 @@
 
     <h1 class="text-xl font-bold text-center mb-6" data-lang-key="title" style="color: #213547 !important;">{{ currentLang.title }}</h1>
 
+    <!-- 倒计时 -->
+      <div class="countdown border-gray-300 py-2 px-4 rounded shadow-lg text-center" >
+        <h2 class="font-bold mb-1">{{ currentLang['deadline'] }}</h2>
+        <h2>{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</h2>
+      </div>
+    <!-- 倒计时 -->
+
     <div class="scroll-container relative overflow-hidden">
       <div class="scroll-arrow left" @click="moveLeft">
         <i class="fa-solid fa-chevron-left text-xl"></i>
@@ -492,6 +499,60 @@ onUnmounted(() => {
 
   window.removeEventListener('resize', handleResize);
 });
+
+
+// 倒计时相关变量
+const days = ref(0);
+const hours = ref(0);
+const minutes = ref(0);
+const seconds = ref(0);
+let countdownInterval = null;
+
+// 初始化倒计时
+onMounted(() => {
+  // 设置目标日期: 2025年8月16日中午12点(GMT)
+  const targetDate = new Date('2025-08-16T12:00:00Z');
+
+  // 更新倒计时函数
+  const updateCountdown = () => {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff > 0) {
+      days.value = Math.floor(diff / (1000 * 60 * 60 * 24));
+      hours.value = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      minutes.value = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      seconds.value = Math.floor((diff % (1000 * 60)) / 1000);
+    } else {
+      days.value = 0;
+      hours.value = 0;
+      minutes.value = 0;
+      seconds.value = 0;
+      clearInterval(countdownInterval);
+    }
+  };
+
+  // 立即更新一次
+  updateCountdown();
+
+  // 每秒更新一次
+  countdownInterval = setInterval(updateCountdown, 1000);
+
+  // 同时获取模拟数据
+  fetchSimulationData().then(data => {
+    simulationData.value = data;
+    // 初始化每个地图的选择状态
+    selectedTier.value = simulationData.value.map(() => 'T1');
+  });
+});
+
+// 组件卸载时清除定时器
+onUnmounted(() => {
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+  }
+});
+
 </script>
 
 <style scoped>

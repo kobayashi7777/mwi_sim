@@ -67,6 +67,7 @@ const lang = {
     template_nature_copy: "复制奶",
     template_water_copy: "复制水",
     template_fire_copy: "复制火",
+    deadline: '截止时间',
   },
   en: {
     title: "Dungeon Simulation Competition",
@@ -133,6 +134,7 @@ const lang = {
     template_nature_copy: "Nature",
     template_water_copy: "Water",
     template_fire_copy: "Fire",
+    deadline: 'Deadline',
   }
 };
 
