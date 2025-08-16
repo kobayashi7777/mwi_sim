@@ -143,6 +143,7 @@ async function handleGetSimulationData(request, env, ctx, corsHeaders) {
 			const cacheTimestamp = await env.MWI_SIM_CACHE.get('cache_timestamp');
 			const now = Date.now();
 			const oneDay = 24* 60 * 60 * 1000;
+			//一天更新一次
 
 			// 如果缓存存在且未过期
 			if (cachedData && cacheTimestamp && (now - parseInt(cacheTimestamp) < oneDay)) {
