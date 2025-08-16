@@ -21,6 +21,7 @@
       <div class="countdown border-gray-300 py-2 px-4 rounded shadow-lg text-center" >
         <h2 class="font-bold mb-1">{{ currentLang['deadline'] }}</h2>
         <h2>{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</h2>
+        <h2>{{ currentLang['close_note'] }}</h2>
       </div>
     <!-- 倒计时 -->
 

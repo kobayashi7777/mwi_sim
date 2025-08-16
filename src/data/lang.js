@@ -68,6 +68,7 @@ const lang = {
     template_water_copy: "复制水",
     template_fire_copy: "复制火",
     deadline: '截止时间',
+    close_note: '不再公布成绩，直到比赛结束',
   },
   en: {
     title: "Dungeon Simulation Competition",
@@ -135,6 +136,7 @@ const lang = {
     template_water_copy: "Water",
     template_fire_copy: "Fire",
     deadline: 'Deadline',
+    close_note: 'No longer publish results before the deadline.',
   }
 };
 
